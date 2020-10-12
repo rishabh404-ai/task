@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Register, Entry
 from .forms import RegisterForm, RecordEntryForm
-from django.http import HttpResponse
 from django.views import View
 # Create your views here.
+
+def home(request):
+    return render(request,'base.html')
 
 class RegisterView(View):
     template_name = 'index.html'
@@ -27,6 +29,7 @@ class RegisterView(View):
             return redirect('/api/v1/entry/')
       
         return render(request,self.template_name,{'form':form})  
+
 
 class RecordEntryView(View):
     template_name = 'entry.html'
