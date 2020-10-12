@@ -1,7 +1,8 @@
 from django import forms
 from .models import Register
 from django.forms import TextInput
-
+from .utils import Util
+from django.core.mail import EmailMessage,send_mail
 
 class RegisterForm(forms.ModelForm):
 
@@ -13,6 +14,7 @@ class RegisterForm(forms.ModelForm):
     ) 
     
     id_type = forms.ChoiceField(choices=ID_CHOICES,widget=forms.Select(attrs={"name": "select_0","class": "form-control"}))
+    
     class Meta:
         model = Register
         fields = ['name','idcard_no','id_type','address','phone_no','email','meet_with']
@@ -36,6 +38,7 @@ class RegisterForm(forms.ModelForm):
         email = cleaned_data.get('email')
         meet_with = cleaned_data.get('meet_with')   
 
+        # Error-Handling Validations 
         if not name:
             return forms.ValidationError('Failed : Name is Required ')
 
@@ -56,8 +59,25 @@ class RegisterForm(forms.ModelForm):
         
         if not meet_with:
             return forms.ValidationError('Failed : You must specify the person you wanna meet')    
-        
-            
+
+        # Email Config For New User     
+        if email:
+            email_body = 'Hello New User, Welcome to our office'
+            data = {'email_body': email_body, 'to_email': email, 'email_subject': 'Thank You'}    
+            Util.send_mail(data)
+  
+        # Email Config For Existing User  
+        if Register.objects.filter(email=email).exists():
+
+            user_email = Register.objects.get(email=email)
+            email_body = 'Hello User,Welcome Back'
+            data = {'email_body': email_body, 'to_email': user_email.email, 'email_subject': 'Thank You'}    
+            Util.send_mail(data)
+
+                        
+         
+                        
+                            
 
 
 

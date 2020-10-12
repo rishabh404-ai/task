@@ -24,7 +24,7 @@ class RegisterView(View):
                            meet_with=cleaned_data['meet_with'])
 
             register.save()
-            return HttpResponse('Response Subbmited') 
+            return HttpResponse('Response Submited') 
       
         return render(request,self.template_name,{'form':form})        
 
