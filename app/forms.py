@@ -19,12 +19,13 @@ class RegisterForm(forms.ModelForm):
         model = Register
         fields = ['name','idcard_no','id_type','address','phone_no','email','meet_with']
         
-        widgets ={'name': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Enter your Name", 'name':"name"}),
-                  'idcard_no': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Enter your IDcard No", 'name':"idcard_no"}),
-                  'address': TextInput(attrs={'type':'text','class':"form-control",'placeholder':"Enter your Address", 'name':"address" }),
-                  'phone_no':TextInput(attrs={'type':'phone','class':"form-control",'placeholder':"Enter your Phone No", 'name':"phone_no"}),
-                  'email':TextInput(attrs={'type':'email','class':"form-control",'placeholder':"Enter your Email", 'name':"email"}),
-                  'meet_with':TextInput(attrs={'type':'text','class':"form-control",'placeholder':"With whom you wanna meet ?", 'name':"meet_with" }),
+        widgets ={
+            'name': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Enter your Name", 'name':"name"}),
+            'idcard_no': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Enter your IDcard No", 'name':"idcard_no"}),
+            'address': TextInput(attrs={'type':'text','class':"form-control",'placeholder':"Enter your Address", 'name':"address" }),
+            'phone_no':TextInput(attrs={'type':'phone','class':"form-control",'placeholder':"Enter your Phone No", 'name':"phone_no"}),
+            'email':TextInput(attrs={'type':'email','class':"form-control",'placeholder':"Enter your Email", 'name':"email"}),
+            'meet_with':TextInput(attrs={'type':'text','class':"form-control",'placeholder':"With whom you wanna meet ?", 'name':"meet_with" }),
         } 
 
 
@@ -80,12 +81,25 @@ class RecordEntryForm(forms.ModelForm):
     class Meta:
         model = Entry
         fields = ['person','start_time','end_time']
-        widgets = {'person': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Name of User", 'name':"name"}),
-                  'start_time': TextInput(attrs={'type':'datetime-local','class':"form-control", 'placeholder':"Entry Time", 'name':"idcard_no"}),
-                  'end_time': TextInput(attrs={'type':'datetime-local','class':"form-control",'placeholder':"Exit Time", 'name':"address" }),
-                  
-        }   
+        widgets = {
+            'person': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Name of User", 'name':"name"}),
+            'start_time': TextInput(attrs={'type':'datetime-local','class':"form-control", 'placeholder':"Entry Time", 'name':"idcard_no"}),
+            'end_time': TextInput(attrs={'type':'datetime-local','class':"form-control",'placeholder':"Exit Time", 'name':"address" }),
+            }   
                             
+    def clean(self):
+        cleaned_data = super().clean()
+        person = cleaned_data.get('person')
+        start_time = cleaned_data.get('start_time')
+        end_time = cleaned_data.get('end_time')
 
+        # Error-Handling
 
+        if not person:
+            raise forms.ValidationError('Failed : Enter the person name')
 
+        if not start_time:
+            raise forms.ValidationError('Failed : Enter the entry time of the person')
+
+        if not end_time:
+            raise forms.ValidationError('Failed : Enter the exit time of the person')
