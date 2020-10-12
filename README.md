@@ -1,7 +1,11 @@
 # task
 
 PROJECT FOLDER : project
+
+
 App : app
+
+
 Database Used : db.sqlite3
 
 1. Landing Page Endpoint :
