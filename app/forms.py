@@ -82,7 +82,7 @@ class RecordEntryForm(forms.ModelForm):
         model = Entry
         fields = ['person','start_time','end_time']
         widgets = {
-            'person': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Name of User", 'name':"name"}),
+            
             'start_time': TextInput(attrs={'type':'datetime-local','class':"form-control", 'placeholder':"Entry Time", 'name':"idcard_no"}),
             'end_time': TextInput(attrs={'type':'datetime-local','class':"form-control",'placeholder':"Exit Time", 'name':"address" }),
             }   
@@ -103,3 +103,6 @@ class RecordEntryForm(forms.ModelForm):
 
         if not end_time:
             raise forms.ValidationError('Failed : Enter the exit time of the person')
+
+
+  

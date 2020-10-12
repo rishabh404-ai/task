@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # User-Register Model
 
 ID_CHOICES =( 
