@@ -9,16 +9,26 @@ Database Used : db.sqlite3
 
 http://127.0.0.1:8000/api/v1/
 
+
+![](working-screenshots/1.png)
+
+
 2. User Registeration Endpoint :
 
 
 http://127.0.0.1:8000/api/v1/register/
+
+
+![](working-screenshots/2.png)
+
 
 3. Time Record Endpoint :
 
 
 http://127.0.0.1:8000/api/v1/entry/
 
+
+![](working-screenshots/3.png)
 
 
 How to get the app running locally ?
