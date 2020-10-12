@@ -36,5 +36,28 @@ class RegisterForm(forms.ModelForm):
         email = cleaned_data.get('email')
         meet_with = cleaned_data.get('meet_with')   
 
+        if not name:
+            return forms.ValidationError('Failed : Name is Required ')
+
+        if not idcard_no:
+            return forms.ValidationError('Failed : Idcard No is Required ')   
+
+        if not id_type:
+            return forms.ValidationError('Failed : Id_Type is Required ')
+
+        if not address:
+            return forms.ValidationError('Failed : Address is Required ')
+
+        if not phone_no:
+            return forms.ValidationError('Failed : Phone No is Required ')
+
+        if not email:
+            return forms.ValidationError('Failed : Email is Required ')
+        
+        if not meet_with:
+            return forms.ValidationError('Failed : You must specify the person you wanna meet')    
+        
+            
+
 
 
