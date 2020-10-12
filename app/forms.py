@@ -82,7 +82,6 @@ class RecordEntryForm(forms.ModelForm):
         model = Entry
         fields = ['person','start_time','end_time']
         widgets = {
-            
             'start_time': TextInput(attrs={'type':'datetime-local','class':"form-control", 'placeholder':"Entry Time", 'name':"idcard_no"}),
             'end_time': TextInput(attrs={'type':'datetime-local','class':"form-control",'placeholder':"Exit Time", 'name':"address" }),
             }   

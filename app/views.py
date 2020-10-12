@@ -45,7 +45,7 @@ class RecordEntryView(View):
                            person=cleaned_data['person'],start_time=cleaned_data['start_time'],end_time=cleaned_data['end_time'])
 
             entry.save()
-            return HttpResponse('Response Submited') 
+            return render(request,'done.html')
       
         return render(request,self.template_name,{'form':form})  
 
