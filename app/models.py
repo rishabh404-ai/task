@@ -18,10 +18,13 @@ class Register(models.Model):
     phone_no = models.CharField(max_length=11)
     email = models.EmailField()
     meet_with = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
     
 # Record of User Entry & Exit Model
 class Entry(models.Model):
-    person = models.ForeignKey(Register,null=True,on_delete=models.SET_NULL,related_name='Registered User')
+    person = models.ForeignKey(Register,null=True,on_delete=models.SET_NULL,related_name='RegisteredUsers')
     start_time = models.DateTimeField(auto_now_add=False)
     end_time = models.DateTimeField(auto_now_add=False)
 
