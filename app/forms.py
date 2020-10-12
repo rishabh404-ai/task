@@ -1,5 +1,5 @@
 from django import forms
-from .models import Register
+from .models import Register, Entry
 from django.forms import TextInput
 from .utils import Util
 from django.core.mail import EmailMessage,send_mail
@@ -75,8 +75,16 @@ class RegisterForm(forms.ModelForm):
             Util.send_mail(data)
 
                         
-         
-                        
+class RecordEntryForm(forms.ModelForm):
+
+    class Meta:
+        model = Entry
+        fields = ['person','start_time','end_time']
+        widgets = {'person': TextInput(attrs={'type':'text','class':"form-control", 'placeholder':"Name of User", 'name':"name"}),
+                  'start_time': TextInput(attrs={'type':'datetime-local','class':"form-control", 'placeholder':"Entry Time", 'name':"idcard_no"}),
+                  'end_time': TextInput(attrs={'type':'datetime-local','class':"form-control",'placeholder':"Exit Time", 'name':"address" }),
+                  
+        }   
                             
 
 
