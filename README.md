@@ -8,6 +8,12 @@ App : **app
 
 Database Used : **db.sqlite3
 
+Features Listed In The App :
+
+● User Registerations
+
+● Staff recording users entry & exit time in office.
+
 **1. Landing Page Endpoint :
 
 
