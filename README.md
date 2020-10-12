@@ -1,14 +1,14 @@
 # task
 
-PROJECT FOLDER : project
+PROJECT FOLDER : **project
 
 
-App : app
+App : **app
 
 
-Database Used : db.sqlite3
+Database Used : **db.sqlite3
 
-1. Landing Page Endpoint :
+**1. Landing Page Endpoint :
 
 
 http://127.0.0.1:8000/api/v1/
@@ -17,7 +17,7 @@ http://127.0.0.1:8000/api/v1/
 ![](working-screenshots/1.png)
 
 
-2. User Registeration Endpoint :
+**2. User Registeration Endpoint :
 
 
 http://127.0.0.1:8000/api/v1/register/
@@ -26,7 +26,7 @@ http://127.0.0.1:8000/api/v1/register/
 ![](working-screenshots/2.png)
 
 
-3. Time Record Endpoint :
+**3. Time Record Endpoint :
 
 
 http://127.0.0.1:8000/api/v1/entry/
@@ -37,13 +37,13 @@ http://127.0.0.1:8000/api/v1/entry/
 
 How to get the app running locally ?
 
-For Linux : RUN > pip3 install -r requirements.txt & python3 manage.py runserver
+**For Linux : RUN > pip3 install -r requirements.txt & python3 manage.py runserver
 
-For Windows : RUN > pip install -r requirements.txt & python manage.py runserver
+**For Windows : RUN > pip install -r requirements.txt & python manage.py runserver
 
 How to check entries in database ?
 
-Run > python3 manage.py createsuperuser
+Run  **python3 manage.py createsuperuser
 
 Please create a dummy superuser and check the details in the admin panel by going on the link :
 
