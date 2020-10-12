@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+# User-Register Model
 
 ID_CHOICES =( 
         ("1", "PAN"), 
@@ -18,6 +19,9 @@ class Register(models.Model):
     email = models.EmailField()
     meet_with = models.CharField(max_length=100)
     
-
-
+# Record of User Entry & Exit Model
+class Entry(models.Model):
+    person = models.ForeignKey(Register,null=True,on_delete=models.SET_NULL,related_name='Registered User')
+    start_time = models.DateTimeField(auto_now_add=False)
+    end_time = models.DateTimeField(auto_now_add=False)
 
